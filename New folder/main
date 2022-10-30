@@ -1,0 +1,34 @@
+from admin_operations import admin_operations
+class main_class:
+
+    def __init__(self,loginid,password):
+        self.admin_operations = admin_operations()
+        self.loginid=loginid
+        self.passwrod=password
+
+    def exe(self,choice):
+        if choice == 1:
+            self.admin_operations.add_food()
+        elif choice == 2:
+            self.admin_operations.viewfood()
+        elif choice == 3:
+            foodid = int(input("Enter food ID : "))
+            food = self.admin_operations.search_food_by_ID(foodid)
+            print(food)
+        elif choice == 4:
+            self.admin_operations.delete_food()
+        elif choice == 5:
+            self.admin_operations.update_food()
+        
+if __name__ == "__main__":
+    print("login as Admin")
+
+    obj = main_class(1234567,"Yuvarajan")
+    print(obj)
+
+
+    while True:
+        choice = int(input("Enter \n1.Add food \n2.View food \n3.Search food By ID \n4.Delete food \n5.Update food : \n"))
+        if choice > 5 or choice < 1:
+            break
+        obj.exe(choice)
